@@ -1,11 +1,12 @@
 {
     "name": "complexactioncomposer",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "Complex Action Composer",
     "main": "build/index.js",
     "scripts": {
         "watch": "tsc --watch",
         "build": "tsc --build",
+        "prepare": "tsc --build",
         "test": "jest --runInBand",
         "test-action": "jest --runInBand Action.test.ts",
         "test-action-debug": "node --inspect-brk ./node_modules/.bin/jest Action.test.ts"
