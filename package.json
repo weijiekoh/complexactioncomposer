@@ -1,6 +1,6 @@
 {
     "name": "complexactioncomposer",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Complex Action Composer",
     "main": "build/index.js",
     "scripts": {
