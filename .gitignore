@@ -1,4 +1,5 @@
 build/*
+ts/__tests__/*.js
 
 # Logs
 logs

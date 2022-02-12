@@ -9,6 +9,7 @@ abstract class Action<Config, Output, Dependencies>{
     public logFilepath: string
     public basename: string
     public constructorDate: Date
+    public config: Config
 
     /*
      * @param config An object containing the configuration required by this
@@ -19,10 +20,11 @@ abstract class Action<Config, Output, Dependencies>{
      * output of the Action.
      */
     constructor(
-        readonly config: Config,
-        readonly dependencies: Dependencies,
-        readonly workspaceDir: string,
+        config: Config,
+        public dependencies: Dependencies,
+        public workspaceDir: string,
     ) {
+        this.config = config
         this.constructorDate = new Date()
         this.basename = this.genBaseName(this.constructorDate)
         this.logFilepath = this.createLogFile()
