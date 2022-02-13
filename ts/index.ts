@@ -9,7 +9,6 @@ abstract class Action<Config, Output, Dependencies>{
     public logFilepath: string
     public basename: string
     public constructorDate: Date
-    public config: Config
 
     /*
      * @param config An object containing the configuration required by this
@@ -20,11 +19,11 @@ abstract class Action<Config, Output, Dependencies>{
      * output of the Action.
      */
     constructor(
-        config: Config,
+        public config: Config,
         public dependencies: Dependencies,
         public workspaceDir: string,
+        public prefix?: string | undefined
     ) {
-        this.config = config
         this.constructorDate = new Date()
         this.basename = this.genBaseName(this.constructorDate)
         this.logFilepath = this.createLogFile()
@@ -110,7 +109,12 @@ abstract class Action<Config, Output, Dependencies>{
             `${utcDate}-${utcHour}${utcMin}-${utcSecs}`
 
         const filename = `${this.constructor.name}.${wh}.${timestamp}`
-        return `${this.constructor.name}.${wh}.${timestamp}`
+
+        if (this.prefix == undefined) {
+            return `${this.constructor.name}.${wh}.${timestamp}`
+        } else {
+            return `${this.prefix}.${this.constructor.name}.${wh}.${timestamp}`
+        }
     }
 
     /*

@@ -102,7 +102,7 @@ describe('Action', () => {
             multiplier: 5,
             multiplicand: 6,
         }
-        const mulAction = new MulAction(mulConfig, {}, tmpDirPath)
+        const mulAction = new MulAction(mulConfig, {}, tmpDirPath, 'prefix')
         const mulOut = await mulAction.run()
 
         const abcConfig: AbcConfig = {
@@ -124,6 +124,6 @@ describe('Action', () => {
 
     afterAll(async () => {
         console.log(tmpDirPath)
-        //fs.rmSync(tmpDirPath, { recursive: true, force: true })
+        fs.rmSync(tmpDirPath, { recursive: true, force: true })
     })
 })
